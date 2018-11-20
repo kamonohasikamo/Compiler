@@ -1,7 +1,8 @@
 package lang.c;
 
-import lang.*;
-import lang.c.parse.*;
+import lang.FatalErrorException;
+import lang.IOContext;
+import lang.c.parse.Program;
 
 public class MiniCompiler {
 	public static void main(String[] args) {
@@ -9,6 +10,7 @@ public class MiniCompiler {
 		IOContext ioCtx = new IOContext(inFile, System.out, System.err);
 		CTokenizer tknz = new CTokenizer(new CTokenRule());
 		CParseContext pcx = new CParseContext(ioCtx, tknz);
+		
 		try {
 			CTokenizer ct = pcx.getTokenizer();
 			CToken tk = ct.getNextToken(pcx);
